@@ -4,20 +4,31 @@
 #
 Name     : scummvm
 Version  : 2.0.0
-Release  : 1
+Release  : 2
 URL      : https://github.com/scummvm/scummvm/archive/v2.0.0.tar.gz
 Source0  : https://github.com/scummvm/scummvm/archive/v2.0.0.tar.gz
 Summary  : CxxTest Testing Framework for C++
 Group    : Development/Tools
-License  : GPL-2.0 MIT
+License  : BSD-2-Clause BSD-3-Clause GPL-2.0 GPL-3.0 LGPL-2.1 MIT PostgreSQL
 Requires: scummvm-bin = %{version}-%{release}
 Requires: scummvm-data = %{version}-%{release}
 Requires: scummvm-license = %{version}-%{release}
 Requires: scummvm-man = %{version}-%{release}
 BuildRequires : SDL-dev
+BuildRequires : SDL_net-dev
+BuildRequires : alsa-lib-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-cpan
+BuildRequires : curl-dev
+BuildRequires : flac-dev
+BuildRequires : freetype-dev
+BuildRequires : libjpeg-turbo-dev
+BuildRequires : libpng-dev
+BuildRequires : libtheora-dev
+BuildRequires : libvorbis-dev
 BuildRequires : pkgconfig(x11)
+BuildRequires : readline-dev
+BuildRequires : zlib-dev
 
 %description
 CxxTest is a JUnit/CppUnit/xUnit-like framework for C++.
@@ -80,17 +91,22 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1548801464
+export SOURCE_DATE_EPOCH=1548802583
 %configure --disable-static || ./configure --host=x86_64-generic-linux-gnu --prefix=/usr --exec-prefix=/usr --bindir=/usr/bin --datadir=/usr/share --libdir=/usr/lib64 --mandir=/usr/share/man
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1548801464
+export SOURCE_DATE_EPOCH=1548802583
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/scummvm
 cp COPYING %{buildroot}/usr/share/package-licenses/scummvm/COPYING
+cp COPYING.BSD %{buildroot}/usr/share/package-licenses/scummvm/COPYING.BSD
+cp COPYING.FREEFONT %{buildroot}/usr/share/package-licenses/scummvm/COPYING.FREEFONT
+cp COPYING.LGPL %{buildroot}/usr/share/package-licenses/scummvm/COPYING.LGPL
+cp backends/platform/maemo/debian/copyright %{buildroot}/usr/share/package-licenses/scummvm/backends_platform_maemo_debian_copyright
 cp devtools/tasmrecover/dreamweb/LICENSE %{buildroot}/usr/share/package-licenses/scummvm/devtools_tasmrecover_dreamweb_LICENSE
 cp engines/sword25/util/lua/COPYRIGHT %{buildroot}/usr/share/package-licenses/scummvm/engines_sword25_util_lua_COPYRIGHT
+cp test/cxxtest/COPYING %{buildroot}/usr/share/package-licenses/scummvm/test_cxxtest_COPYING
 %make_install
 
 %files
@@ -122,6 +138,7 @@ cp engines/sword25/util/lua/COPYRIGHT %{buildroot}/usr/share/package-licenses/sc
 /usr/share/tony.dat
 /usr/share/toon.dat
 /usr/share/translations.dat
+/usr/share/wintermute.zip
 
 %files doc
 %defattr(0644,root,root,0755)
@@ -130,8 +147,13 @@ cp engines/sword25/util/lua/COPYRIGHT %{buildroot}/usr/share/package-licenses/sc
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/scummvm/COPYING
+/usr/share/package-licenses/scummvm/COPYING.BSD
+/usr/share/package-licenses/scummvm/COPYING.FREEFONT
+/usr/share/package-licenses/scummvm/COPYING.LGPL
+/usr/share/package-licenses/scummvm/backends_platform_maemo_debian_copyright
 /usr/share/package-licenses/scummvm/devtools_tasmrecover_dreamweb_LICENSE
 /usr/share/package-licenses/scummvm/engines_sword25_util_lua_COPYRIGHT
+/usr/share/package-licenses/scummvm/test_cxxtest_COPYING
 
 %files man
 %defattr(0644,root,root,0755)

@@ -1,3 +1,14 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
 SDL-dev
+SDL_net-dev
+alsa-lib-dev
+curl-dev
+flac-dev
+freetype-dev
+libjpeg-turbo-dev
+libpng-dev
+libtheora-dev
+libvorbis-dev
+readline-dev
+zlib-dev
