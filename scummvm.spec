@@ -4,7 +4,7 @@
 #
 Name     : scummvm
 Version  : 2.0.0
-Release  : 2
+Release  : 3
 URL      : https://github.com/scummvm/scummvm/archive/v2.0.0.tar.gz
 Source0  : https://github.com/scummvm/scummvm/archive/v2.0.0.tar.gz
 Summary  : CxxTest Testing Framework for C++
@@ -27,7 +27,6 @@ BuildRequires : libpng-dev
 BuildRequires : libtheora-dev
 BuildRequires : libvorbis-dev
 BuildRequires : pkgconfig(x11)
-BuildRequires : readline-dev
 BuildRequires : zlib-dev
 
 %description
@@ -91,12 +90,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1548802583
-%configure --disable-static || ./configure --host=x86_64-generic-linux-gnu --prefix=/usr --exec-prefix=/usr --bindir=/usr/bin --datadir=/usr/share --libdir=/usr/lib64 --mandir=/usr/share/man
+export SOURCE_DATE_EPOCH=1548803140
+%configure --disable-static || ./configure --host=x86_64-generic-linux-gnu --prefix=/usr --exec-prefix=/usr --bindir=/usr/bin --libdir=/usr/lib64 --mandir=/usr/share/man
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1548802583
+export SOURCE_DATE_EPOCH=1548803140
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/scummvm
 cp COPYING %{buildroot}/usr/share/package-licenses/scummvm/COPYING
@@ -118,27 +117,27 @@ cp test/cxxtest/COPYING %{buildroot}/usr/share/package-licenses/scummvm/test_cxx
 
 %files data
 %defattr(-,root,root,-)
-/usr/share/access.dat
 /usr/share/appdata/scummvm.appdata.xml
 /usr/share/applications/scummvm.desktop
-/usr/share/drascula.dat
-/usr/share/hugo.dat
 /usr/share/icons/hicolor/scalable/apps/scummvm.svg
-/usr/share/kyra.dat
-/usr/share/lure.dat
-/usr/share/mort.dat
-/usr/share/neverhood.dat
 /usr/share/pixmaps/scummvm.xpm
-/usr/share/pred.dic
-/usr/share/queen.tbl
-/usr/share/scummclassic.zip
-/usr/share/scummmodern.zip
-/usr/share/sky.cpt
-/usr/share/teenagent.dat
-/usr/share/tony.dat
-/usr/share/toon.dat
-/usr/share/translations.dat
-/usr/share/wintermute.zip
+/usr/share/scummvm/access.dat
+/usr/share/scummvm/drascula.dat
+/usr/share/scummvm/hugo.dat
+/usr/share/scummvm/kyra.dat
+/usr/share/scummvm/lure.dat
+/usr/share/scummvm/mort.dat
+/usr/share/scummvm/neverhood.dat
+/usr/share/scummvm/pred.dic
+/usr/share/scummvm/queen.tbl
+/usr/share/scummvm/scummclassic.zip
+/usr/share/scummvm/scummmodern.zip
+/usr/share/scummvm/sky.cpt
+/usr/share/scummvm/teenagent.dat
+/usr/share/scummvm/tony.dat
+/usr/share/scummvm/toon.dat
+/usr/share/scummvm/translations.dat
+/usr/share/scummvm/wintermute.zip
 
 %files doc
 %defattr(0644,root,root,0755)

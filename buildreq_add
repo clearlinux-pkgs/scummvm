@@ -10,5 +10,4 @@ libjpeg-turbo-dev
 libpng-dev
 libtheora-dev
 libvorbis-dev
-readline-dev
 zlib-dev
