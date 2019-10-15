@@ -1,5 +1,6 @@
 libFLAC.so.8
 libSDL-1.2.so.0
+libSDL_net-1.2.so.0
 libasound.so.2
 libc.so.6
 libfreetype.so.6
