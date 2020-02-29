@@ -4,10 +4,10 @@
 #
 Name     : scummvm
 Version  : 2.1.1
-Release  : 6
+Release  : 7
 URL      : https://github.com/scummvm/scummvm/archive/v2.1.1/scummvm-2.1.1.tar.gz
 Source0  : https://github.com/scummvm/scummvm/archive/v2.1.1/scummvm-2.1.1.tar.gz
-Summary  : No detailed summary available
+Summary  : Allows you to run certain classic graphical point-and-click adventure games.
 Group    : Development/Tools
 License  : BSD-2-Clause BSD-3-Clause CC-BY-3.0 GPL-2.0 GPL-3.0 LGPL-2.1 MIT OFL-1.1 PostgreSQL
 Requires: scummvm-bin = %{version}-%{release}
@@ -93,7 +93,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1579302031
+export SOURCE_DATE_EPOCH=1582955577
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -103,7 +103,7 @@ export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1579302031
+export SOURCE_DATE_EPOCH=1582955577
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/scummvm
 cp %{_builddir}/scummvm-2.1.1/COPYING %{buildroot}/usr/share/package-licenses/scummvm/2b9d60c2972b476384af9900276837ac81954e80
