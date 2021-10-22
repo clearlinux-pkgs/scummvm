@@ -1,1 +1,2 @@
-|| ./configure --host=x86_64-generic-linux-gnu --prefix=/usr --exec-prefix=/usr --bindir=/usr/bin --libdir=/usr/lib64 --mandir=/usr/share/man
+--datadir=/usr/share/scummvm
+--enable-release

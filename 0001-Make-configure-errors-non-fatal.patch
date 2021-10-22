@@ -1,0 +1,25 @@
+From ba4d7a11b382341566f8ed8851f07263e3a59aed Mon Sep 17 00:00:00 2001
+From: "Brett T. Warden" <brett.t.warden@intel.com>
+Date: Fri, 22 Oct 2021 15:32:33 -0700
+Subject: [PATCH] Make configure errors non-fatal
+
+---
+ configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure b/configure
+index 0951e9abaae3..480978a6ef36 100755
+--- a/configure
++++ b/configure
+@@ -590,7 +590,7 @@ option_help() {
+ option_error() {
+ 	echo "error: unrecognized option: $ac_option
+ Try \`$0 --help' for more information." >&2
+-	exit 1
++	# exit 1
+ }
+ 
+ # Show an error about an unknown engine
+-- 
+2.33.1
+

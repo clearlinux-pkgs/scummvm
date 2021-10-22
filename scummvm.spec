@@ -4,7 +4,7 @@
 #
 Name     : scummvm
 Version  : 2.5.0
-Release  : 11
+Release  : 12
 URL      : https://github.com/scummvm/scummvm/archive/v2.5.0/scummvm-2.5.0.tar.gz
 Source0  : https://github.com/scummvm/scummvm/archive/v2.5.0/scummvm-2.5.0.tar.gz
 Summary  : Allows you to run certain classic graphical point-and-click adventure games.
@@ -28,7 +28,8 @@ BuildRequires : libtheora-dev
 BuildRequires : libvorbis-dev
 BuildRequires : pkgconfig(x11)
 BuildRequires : zlib-dev
-Patch1: CVE-2014-5461.patch
+Patch1: 0001-Make-configure-errors-non-fatal.patch
+Patch2: CVE-2014-5461.patch
 
 %description
 ScummVM is an interpreter that will play many graphic adventure games,
@@ -87,23 +88,25 @@ man components for the scummvm package.
 %setup -q -n scummvm-2.5.0
 cd %{_builddir}/scummvm-2.5.0
 %patch1 -p1
+%patch2 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1633453476
+export SOURCE_DATE_EPOCH=1634943387
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
 export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
 export FFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
 export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
-%configure --disable-static || ./configure --host=x86_64-generic-linux-gnu --prefix=/usr --exec-prefix=/usr --bindir=/usr/bin --libdir=/usr/lib64 --mandir=/usr/share/man
+%configure --disable-static --datadir=/usr/share/scummvm \
+--enable-release
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1633453476
+export SOURCE_DATE_EPOCH=1634943387
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/scummvm
 cp %{_builddir}/scummvm-2.5.0/COPYING %{buildroot}/usr/share/package-licenses/scummvm/4cc77b90af91e615a64ae04893fdffa7939db84c
