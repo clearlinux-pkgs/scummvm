@@ -4,12 +4,12 @@
 #
 Name     : scummvm
 Version  : 2.6.0
-Release  : 17
+Release  : 18
 URL      : https://github.com/scummvm/scummvm/archive/v2.6.0/scummvm-2.6.0.tar.gz
 Source0  : https://github.com/scummvm/scummvm/archive/v2.6.0/scummvm-2.6.0.tar.gz
 Summary  : Allows you to run certain classic graphical point-and-click adventure games.
 Group    : Development/Tools
-License  : BSD-2-Clause BSD-3-Clause CC-BY-3.0 GPL-3.0 ISC LGPL-2.1 MIT OFL-1.1 PostgreSQL Zlib
+License  : Apache-2.0 BSD-2-Clause BSD-3-Clause CC-BY-3.0 GPL-3.0 ISC LGPL-2.1 MIT OFL-1.1 PostgreSQL Zlib
 Requires: scummvm-bin = %{version}-%{release}
 Requires: scummvm-data = %{version}-%{release}
 Requires: scummvm-license = %{version}-%{release}
@@ -95,7 +95,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1658099152
+export SOURCE_DATE_EPOCH=1664908627
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
 export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
@@ -106,22 +106,26 @@ export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-re
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1658099152
+export SOURCE_DATE_EPOCH=1664908627
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/scummvm
-cp %{_builddir}/scummvm-2.6.0/COPYING %{buildroot}/usr/share/package-licenses/scummvm/31a3d460bb3c7d98845187c716a30db81c44b615
-cp %{_builddir}/scummvm-2.6.0/LICENSES/COPYING.BSD %{buildroot}/usr/share/package-licenses/scummvm/da895920d4a7d4f0920fade3570969cf4d5fafd6
-cp %{_builddir}/scummvm-2.6.0/LICENSES/COPYING.FREEFONT %{buildroot}/usr/share/package-licenses/scummvm/e58874a433eec4f975f35cb34379712d3b932f9e
-cp %{_builddir}/scummvm-2.6.0/LICENSES/COPYING.ISC %{buildroot}/usr/share/package-licenses/scummvm/1ee6945db9b441059627e2e4a6fd39d0ac1c0d70
-cp %{_builddir}/scummvm-2.6.0/LICENSES/COPYING.LGPL %{buildroot}/usr/share/package-licenses/scummvm/091c8f65dffdd24bf8c803d8b97c365d2981bdf5
-cp %{_builddir}/scummvm-2.6.0/LICENSES/COPYING.OFL %{buildroot}/usr/share/package-licenses/scummvm/ea3155a0218b1c5cb952b1a18f2b601795ba8569
-cp %{_builddir}/scummvm-2.6.0/audio/soundfont/VGMTrans_LICENSE.txt %{buildroot}/usr/share/package-licenses/scummvm/14e89807e531a116c2d9d79e5284f195655713b2
-cp %{_builddir}/scummvm-2.6.0/common/lua/COPYRIGHT %{buildroot}/usr/share/package-licenses/scummvm/52144cf874618949f7857eb5adb964bf3cd7938f
-cp %{_builddir}/scummvm-2.6.0/devtools/tasmrecover/dreamweb/LICENSE %{buildroot}/usr/share/package-licenses/scummvm/31a3d460bb3c7d98845187c716a30db81c44b615
-cp %{_builddir}/scummvm-2.6.0/dists/debian/copyright %{buildroot}/usr/share/package-licenses/scummvm/c57e74e2f28fade261732ed7974b22b5b34fb80e
-cp %{_builddir}/scummvm-2.6.0/dists/snap/LICENSE %{buildroot}/usr/share/package-licenses/scummvm/25053a3b2190049c9d407b00c3a2ff001a7c066a
-cp %{_builddir}/scummvm-2.6.0/gui/themes/fonts/LICENSE.mplus %{buildroot}/usr/share/package-licenses/scummvm/a70b05899e79e96734d62e59093e646812eba2db
-cp %{_builddir}/scummvm-2.6.0/test/cxxtest/COPYING %{buildroot}/usr/share/package-licenses/scummvm/dd4547c72e04fd16fd675556993abb945491a69c
+cp %{_builddir}/scummvm-%{version}/COPYING %{buildroot}/usr/share/package-licenses/scummvm/31a3d460bb3c7d98845187c716a30db81c44b615 || :
+cp %{_builddir}/scummvm-%{version}/LICENSES/COPYING.BSD %{buildroot}/usr/share/package-licenses/scummvm/da895920d4a7d4f0920fade3570969cf4d5fafd6 || :
+cp %{_builddir}/scummvm-%{version}/LICENSES/COPYING.FREEFONT %{buildroot}/usr/share/package-licenses/scummvm/e58874a433eec4f975f35cb34379712d3b932f9e || :
+cp %{_builddir}/scummvm-%{version}/LICENSES/COPYING.GLAD %{buildroot}/usr/share/package-licenses/scummvm/179b231da21a2a00584e3fbe905eaa8aeb659176 || :
+cp %{_builddir}/scummvm-%{version}/LICENSES/COPYING.ISC %{buildroot}/usr/share/package-licenses/scummvm/1ee6945db9b441059627e2e4a6fd39d0ac1c0d70 || :
+cp %{_builddir}/scummvm-%{version}/LICENSES/COPYING.LGPL %{buildroot}/usr/share/package-licenses/scummvm/091c8f65dffdd24bf8c803d8b97c365d2981bdf5 || :
+cp %{_builddir}/scummvm-%{version}/LICENSES/COPYING.MIT %{buildroot}/usr/share/package-licenses/scummvm/ed5455704a0e5e46657530521515574dab455cd4 || :
+cp %{_builddir}/scummvm-%{version}/LICENSES/COPYING.OFL %{buildroot}/usr/share/package-licenses/scummvm/ea3155a0218b1c5cb952b1a18f2b601795ba8569 || :
+cp %{_builddir}/scummvm-%{version}/LICENSES/COPYING.TINYGL %{buildroot}/usr/share/package-licenses/scummvm/579527fce9662f931f71819e0cc9df0d04a6330a || :
+cp %{_builddir}/scummvm-%{version}/audio/soundfont/VGMTrans_LICENSE.txt %{buildroot}/usr/share/package-licenses/scummvm/14e89807e531a116c2d9d79e5284f195655713b2 || :
+cp %{_builddir}/scummvm-%{version}/common/lua/COPYRIGHT %{buildroot}/usr/share/package-licenses/scummvm/52144cf874618949f7857eb5adb964bf3cd7938f || :
+cp %{_builddir}/scummvm-%{version}/devtools/tasmrecover/dreamweb/LICENSE %{buildroot}/usr/share/package-licenses/scummvm/31a3d460bb3c7d98845187c716a30db81c44b615 || :
+cp %{_builddir}/scummvm-%{version}/dists/debian/copyright %{buildroot}/usr/share/package-licenses/scummvm/c57e74e2f28fade261732ed7974b22b5b34fb80e || :
+cp %{_builddir}/scummvm-%{version}/dists/snap/LICENSE %{buildroot}/usr/share/package-licenses/scummvm/25053a3b2190049c9d407b00c3a2ff001a7c066a || :
+cp %{_builddir}/scummvm-%{version}/graphics/tinygl/LICENSE %{buildroot}/usr/share/package-licenses/scummvm/65203578a020880c05562ee6e25851a1dc45071f || :
+cp %{_builddir}/scummvm-%{version}/gui/themes/fonts/LICENSE.mplus %{buildroot}/usr/share/package-licenses/scummvm/a70b05899e79e96734d62e59093e646812eba2db || :
+cp %{_builddir}/scummvm-%{version}/test/cxxtest/COPYING %{buildroot}/usr/share/package-licenses/scummvm/dd4547c72e04fd16fd675556993abb945491a69c || :
 %make_install
 
 %files
@@ -240,16 +244,20 @@ cp %{_builddir}/scummvm-2.6.0/test/cxxtest/COPYING %{buildroot}/usr/share/packag
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/scummvm/091c8f65dffdd24bf8c803d8b97c365d2981bdf5
 /usr/share/package-licenses/scummvm/14e89807e531a116c2d9d79e5284f195655713b2
+/usr/share/package-licenses/scummvm/179b231da21a2a00584e3fbe905eaa8aeb659176
 /usr/share/package-licenses/scummvm/1ee6945db9b441059627e2e4a6fd39d0ac1c0d70
 /usr/share/package-licenses/scummvm/25053a3b2190049c9d407b00c3a2ff001a7c066a
 /usr/share/package-licenses/scummvm/31a3d460bb3c7d98845187c716a30db81c44b615
 /usr/share/package-licenses/scummvm/52144cf874618949f7857eb5adb964bf3cd7938f
+/usr/share/package-licenses/scummvm/579527fce9662f931f71819e0cc9df0d04a6330a
+/usr/share/package-licenses/scummvm/65203578a020880c05562ee6e25851a1dc45071f
 /usr/share/package-licenses/scummvm/a70b05899e79e96734d62e59093e646812eba2db
 /usr/share/package-licenses/scummvm/c57e74e2f28fade261732ed7974b22b5b34fb80e
 /usr/share/package-licenses/scummvm/da895920d4a7d4f0920fade3570969cf4d5fafd6
 /usr/share/package-licenses/scummvm/dd4547c72e04fd16fd675556993abb945491a69c
 /usr/share/package-licenses/scummvm/e58874a433eec4f975f35cb34379712d3b932f9e
 /usr/share/package-licenses/scummvm/ea3155a0218b1c5cb952b1a18f2b601795ba8569
+/usr/share/package-licenses/scummvm/ed5455704a0e5e46657530521515574dab455cd4
 
 %files man
 %defattr(0644,root,root,0755)
