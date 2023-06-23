@@ -4,7 +4,7 @@
 #
 Name     : scummvm
 Version  : 2.7.0
-Release  : 24
+Release  : 25
 URL      : https://github.com/scummvm/scummvm/archive/v2.7.0/scummvm-2.7.0.tar.gz
 Source0  : https://github.com/scummvm/scummvm/archive/v2.7.0/scummvm-2.7.0.tar.gz
 Summary  : Allows you to run certain classic graphical point-and-click adventure games.
